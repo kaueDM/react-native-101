@@ -11,7 +11,6 @@ PRs são bem vindas. Contribua e ajude seus colegas desenvolvedores.
 ## Sumário
 `TODO`
 
---- 
 ## 1. Iniciando um projeto
 ### 1.1 React Native CLI ou Expo?
 
