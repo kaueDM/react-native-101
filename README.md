@@ -100,4 +100,16 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 
 ❗️ **Após cada instalação, teste seu app. Se ele abrir sem nenhum erro, vá para o próximo módulo.** 
 
+* `react-native-splash-screen`: Por padrão, o React Native apresenta uma tela cinza (Android) ou uma tela branca com o nome do app (iOS) enquanto o código nativo e o bundle JS são inicializados. Para fechar esta lacuna, o [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen#installation) permite a personalização da tela de carregamento de forma simplificada.
+
+    [Este artigo](https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae) mostra o passo a passo de como adicionar telas de carregamento personalizadas em ambas as plataformas. 
+
+* `react-native-firebase`: Mesmo que você não vá usar o Firestore/Realtime Database como seu banco de dados, o Firebase oferece o **Crashlytics**, ferramenta mais que obrigatória em qualquer aplicativo para monitorar falhas em tempo real. Basta seguir [a documentação oficial](https://rnfirebase.io) para adicionar ele ao seu projeto.
+
+* `react-native-vector-icons`: O que é um app sem ícones, não é mesmo? [Esse módulo](https://github.com/oblador/react-native-vector-icons) fornece diversas bibliotecas de ícones, como FontAwesome, Feather, MaterialIcons, etc. Você pode conferir todos os ícones disponíveis [aqui](https://oblador.github.io/react-native-vector-icons/).
+
+❗️ **Se você for usar ícones próprios, não é necessário instalar este módulo nativamente.** 
+
+## Módulos JavaScript que você (provavelmente) vai usar
+
 `TODO`
