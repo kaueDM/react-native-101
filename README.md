@@ -119,3 +119,103 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 * `redux`: O Redux é um container de estado para seu app. Em outras palavras, é um """`state` global""" (repare na quantidade de aspas nesse termo). Uma boa referência para entender o que é Redux é [este vídeo (em inglês)](https://www.youtube.com/watch?v=KcC8KZ_Ga2M) (recomendação do [starchild637](https://github.com/starchild637)). Só antes de sair instalando, verifique se você entende o que é Redux e se realmente precisa adicionar essa camada de complexidade no seu projeto.
 
 * `styled-components`: Recomendação pessoal. o [`styled-components`](https://www.styled-components.com/) simplifica a personalização visual dos seus componentes, usando uma sintaxe próxima ao do CSS.
+
+## 4. Estrutura de pastas
+
+❗️ **Isso aqui não é regra. Modifique como quiser, ou ignore e crie a sua estrutura.** 
+
+Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos últimos dois anos, a estrutura abaixo é proposta:
+
+### 4.1 Visão geral
+```
+.
+├── 📄 App.js
+├── 📄 app.json
+├── 📄 index.js
+├── 📄 package.json
+├── 📁 android
+├── 📁 ios
+├── 📁 src
+│   ├── 📁 assets
+│   │   └── 📁 images
+│   │       └── 📄 logo.png
+│   │
+│   ├── 📁 components
+│   │   └── 📁 Button
+│   │       ├── 📄 index.js
+│   │       └── 📄 Button.story.js
+│   │
+│   ├── 📁 config
+│   │   ├── 📄 colors.js
+│   │   └── 📄 routes.js
+│   │ 
+│   └── 📁 redux
+│       ├── 📄 store.js
+│       └── 📁 reducers
+│           ├── 📄 index.js
+│           └── 📄 customer.js
+│
+├── 📁 screens
+│   └── 📁 Home
+│       ├── 📄 index.js
+│       └── 📄 _localComponents.js
+│
+├── 📁 services
+│   └── 📁 API
+│       ├── 📄 API.js
+│       └── 📄 SomeAPIEndpoint.js
+│
+└── 📁 utils
+    └── 📁 String
+        └── 📄 camelize.js
+```
+
+### 4.2 Descrição
+
+* **./assets:** A pasta onde todos os seus arquivos externos vão ficar.
+
+* **./components:** Cada componente deve ter a sua própria pasta, sendo sempre que possível `stateless`. Caso você use Storybook, sua `story` deve ficar dentro da pasta do respectivo componente.
+
+* **./config:** Arquivos de configuração do seu app. Rotas, cores, etc.
+
+* **./redux:** Caso use Redux, aqui ficam o `store` e os `reducers` da sua aplicação. A estrutura desses reducers serão abordadas nos próximos capítulos deste guia 🦆.
+
+* **./screens:** As telas do seu app. Cada tela tem sua própria pasta. Dentro de cada pasta pode existir também algo que chamo de `_localComponents`. O conteúdo desses arquivos são geralmente **ajustes de layout** específicos para a tela em questão (separadores, margens, etc). São regras que não vão se repetir em outras telas, e para não poluir o arquivo principal, eu as movo para este arquivo genérico.
+
+* **./services:** Serviços são (preferencialmente) classes que fazem algo específico no seu app, ou seja, não podem ser copiadas e coladas em outro projeto. Ficam aqui chamadas para APIs, por exemplo.
+
+* **./utils:** Utilitários são funções que fazem algo genérico, ou seja, podem ser copiadas e coladas em outro projeto. Semelhantes aos módulos do `npm`, os arquivos que estão em `./utils` não são modificados de acordo com a necessidade.
+
+### 4.3 Configuração
+
+Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver). Após a instalação, altere o seu arquivo `.babelrc` para a seguinte estrutura:
+
+❗️ **Caso não exista um arquivo `.babelrc`, crie um.** 
+
+❗️ **Caso exista um arquivo `babelrc.config.js`, modifique para a mesma estrutura usando notação JavaScript ou apague ele e crie um `.babelrc`, dá na mesma.** 
+
+❗️ **Caso seu projeto quebre, encerre o processo do bundler e inicie um novo, limpando o cache. use o comando `react-native start --reset-cache` dentro da pasta do app.** 
+
+```
+{
+  "presets": [
+    "module:metro-react-native-babel-preset"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "root": ["./src"],
+        "extensions": [".js"],
+        "alias": {
+          "screens": "./src/screens",
+          "components": "./src/components",
+          ...outros alias aqui (assets, services, etc)
+        }
+      }
+    ]
+  ]
+}
+```
+
