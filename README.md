@@ -188,7 +188,17 @@ Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos
 
 ### 4.3 Configuração
 
-Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver). Após a instalação, altere o seu arquivo `.babelrc` para a seguinte estrutura:
+Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver). 
+
+```
+yarn add -D babel-plugin-module-resolver
+ou
+npm --save-dev babel-plugin-module-resolver
+```
+
+Além disso, os arquivos principais de cada tela ou componente deverá se chamar `index.js` para facilitar a importação.
+
+Após a instalação, altere o seu arquivo `.babelrc` para a seguinte estrutura:
 
 ❗️ **Caso não exista um arquivo `.babelrc`, crie um.** 
 
@@ -219,3 +229,11 @@ Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer impor
 }
 ```
 
+Após isso, todos os valores definidos em `alias` poderão ser acessados diretamente, ou seja, seus imports ficarão assim:
+
+```
+import Home from 'screens/Home'
+
+// caso o arquivo importado seja nomeado (não se chame index.js):
+import SomeAPIEndpoint from 'services/API/SomeAPIEndpoint'
+```
