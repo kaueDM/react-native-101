@@ -116,6 +116,6 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 
 * `react-navigation`: Responsável por fazer seu app 'trocar de telas', o [`react-navigation`](https://reactnavigation.org/) tornou-se o módulo predileto de navegação da comunidade. É possível acompanhar o progresso da ferramenta pelo [canny.io](https://react-navigation.canny.io).
 
-* `redux`: Se você chegou até aqui, provavelmente eu não preciso te dizer o que é [`redux`](https://redux.js.org/). Só antes de sair instalando, verifique se você realmente precisa adicionar essa camada de complexidade no seu projeto.
+* `redux`: O Redux é um container de estado para seu app. Em outras palavras, é um """`state` global""" (repare na quantidade de aspas nesse termo). Uma boa referência para entender o que é Redux é [este vídeo (em inglês)](https://www.youtube.com/watch?v=KcC8KZ_Ga2M) (recomendação do [starchild637](https://github.com/starchild637)). Só antes de sair instalando, verifique se você entende o que é Redux e se realmente precisa adicionar essa camada de complexidade no seu projeto.
 
 * `styled-components`: Recomendação pessoal. o [`styled-components`](https://www.styled-components.com/) simplifica a personalização visual dos seus componentes, usando uma sintaxe próxima ao do CSS.
