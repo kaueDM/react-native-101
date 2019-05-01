@@ -135,39 +135,39 @@ Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos
 ├── 📄 package.json
 ├── 📁 android
 ├── 📁 ios
-├── 📁 src
-│   ├── 📁 assets
-│   │   └── 📁 images
-│   │       └── 📄 logo.png
-│   │
-│   ├── 📁 components
-│   │   └── 📁 Button
-│   │       ├── 📄 index.js
-│   │       └── 📄 Button.story.js
-│   │
-│   ├── 📁 config
-│   │   ├── 📄 colors.js
-│   │   └── 📄 routes.js
-│   │ 
-│   └── 📁 redux
-│       ├── 📄 store.js
-│       └── 📁 reducers
-│           ├── 📄 index.js
-│           └── 📄 customer.js
-│
-├── 📁 screens
-│   └── 📁 Home
-│       ├── 📄 index.js
-│       └── 📄 _localComponents.js
-│
-├── 📁 services
-│   └── 📁 API
-│       ├── 📄 API.js
-│       └── 📄 SomeAPIEndpoint.js
-│
-└── 📁 utils
-    └── 📁 String
-        └── 📄 camelize.js
+└── 📁 src
+    ├── 📁 assets
+    │   └── 📁 images
+    │       └── 📄 logo.png
+    │
+    ├── 📁 components
+    │   └── 📁 Button
+    │       ├── 📄 index.js
+    │       └── 📄 Button.story.js
+    │
+    ├── 📁 config
+    │   ├── 📄 colors.js
+    │   └── 📄 routes.js
+    │ 
+    ├── 📁 redux
+    │       ├── 📄 store.js
+    │       └── 📁 reducers
+    │           ├── 📄 index.js
+    │           └── 📄 customer.js
+    │
+    ├── 📁 screens
+    │   └── 📁 Home
+    │        ├── 📄 index.js
+    │        └── 📄 _localComponents.js
+    │
+    ├── 📁 services
+    │   └── 📁 API
+    │       ├── 📄 API.js
+    │       └── 📄 SomeAPIEndpoint.js
+    │
+    └── 📁 utils
+        └── 📁 String
+            └── 📄 camelize.js
 ```
 
 ### 4.2 Descrição
