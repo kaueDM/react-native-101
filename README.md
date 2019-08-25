@@ -19,21 +19,37 @@ bibliotecas integradas, além de poder fazer projetos inteiros usando somente o 
 
 > Não existe almoço grátis.
 
-Todas essas facilidades do Expo trazem alguns _drawbacks_, sendo os que considero principais:
+Todas essas facilidades do Expo trazem alguns _drawbacks_, das quais podemos listar:
 
-* Tamanho do app (mais de *20MB* no Android)
+* Tamanho do app (mais de *10MB* no Android, mas algo que [estão trabalhando para diminiuir](https://expo.canny.io/feature-requests/p/reducing-app-size))
 * Incapacidade de adicionar módulos com código nativo (a.k.a. `react-native link`)
+* Aquisições dentro do aplicativo (como ativar um plano premium)
+* Dependência do Expo em políticas das App Store/Play Store - como a recente mudança na Play Store para suporte obrigatório a processadores 64 bits.
 
-_Ah mas o app que eu publiquei na Play Store usa Expo blá blá blá_
+Vale mencionar também algumas vantagens:
 
-Parabéns! 80% do app que seu usuário baixou não tem serventia, é apenas uma pilha de entulho no dispositivo dele.
+* Atualizações OTA
+* Splash screen já implementada por padrão
+* Testar aplicativo no celular sem setup (só baixar o aplicativo do Expo e ler o QR code)
 
 **Então eu não devo usar o Expo para nada?**
 
-Errado. O Expo é ótimo para estudos, para testar aquela sua ideia ou pra compartilhar componentes com outros desenvolvedores. Apenas tenha em mente as suas limitações e evite usar em produção.
+Errado. O Expo deve te atender perfeitamente em alguns casos, mas você deve ter em mente suas limitações e avaliar qual é a melhor opção para você. O ponto principal é que se você precisa usar código nativo ou quer ter um maior controle, evite usar o expo.
 
 ### 1.2 Criando o projeto
 
+##### Expo
+Como o propósito do Expo é facilitar o setup, é muito rápido e fácil iniciar um projeto. Basta ter somente o NodeJS instalado em sua máquina e instalar o expo-cli:
+`npm install expo-cli --global`
+
+Depois disso, basta criar seu projeto pela linha de comando:
+```
+expo init meu-novo-projeto
+cd meu-novo-projeto
+expo start
+```
+
+##### React Native CLI
 Antes de começar, você precisa ter seu ambiente configurado. O melhor lugar pra aprender o que deve ser feito está na documentação oficial, na aba [Building projects with Native Code](https://facebook.github.io/react-native/docs/getting-started)
 
 O próximo passo é criar seu projeto:
@@ -49,24 +65,35 @@ Se você sabe o que é Git mas não utiliza, reveja seus conceitos. Mesmo que se
 👉 Não sabe que estrutura utilizar dentro do Git? Dê uma olhada [nesse artigo.](https://nvie.com/posts/a-successful-git-branching-model/)
 
 ### 1.3 Alterando o nome do projeto
-
 Caso você vá publicar esse projeto nas lojas de aplicativo, crie o mesmo no Google Play Store e/ou Apple App Store.
 
-❗️ **Escolha um nome de pacote consistente.** 
+❗️ **Escolha um nome de pacote consistente.**
 
 Costuma-se utilizar a notação `com.nomedasuaempresa.nomedoapp`. Esta etapa é muito importante, já que não é possível alterar este identificador após publicar o app.
 
 ❗️ **Renomeie seu projeto para refletir o nome do pacote.**
 
+Digamos que seu projeto chama-se _App de Táxis_, esses seriam os passos para renomear seu projeto:
+
+#### Expo
+Você deve adicionar as configurações do ios e do android no arquivo `app.json`, onde fica todas as configurações do seu aplicativo:
+```
+"ios": {
+  "bundleIdentifier": "com.nomedasuaempresa.appdetaxis"
+},
+"android": {
+  "package": "com.nomedasuaempresa.appdetaxis"
+}
+```
+
+##### React Native CLI
 Para facilitar o processo, recomendo a utilização do `react-native-rename`
 
 ```
 npm -i -g react-native-rename
 yarn global add react-native-rename
 ```
-
-Digamos que seu projeto chama-se _App de Táxis_. Para renomear usando o `react-native-rename`, faça o seguinte:
-
+Para renomear usando o `react-native-rename`, faça o seguinte:
 ```
 react-native-rename appdetaxis -b com.nomedasuaempresa.appdetaxis
 ```
@@ -98,17 +125,17 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 
 É interessante também criar um `branch` para cada módulo nativo, já que existem chances de você ter problemas na instalação e ninguém quer fazer tudo do zero né? Mantendo um `branch` para cada módulo, fica fácil reverter para um ponto onde as coisas ainda funcionavam.
 
-❗️ **Após cada instalação, teste seu app. Se ele abrir sem nenhum erro, vá para o próximo módulo.** 
+❗️ **Após cada instalação, teste seu app. Se ele abrir sem nenhum erro, vá para o próximo módulo.**
 
 * `react-native-firebase`: Mesmo que você não vá usar o Firestore/Realtime Database como seu banco de dados, o Firebase oferece o **Crashlytics**, ferramenta mais que obrigatória em qualquer aplicativo para monitorar falhas em tempo real. Basta seguir [a documentação oficial](https://rnfirebase.io) para adicionar ele ao seu projeto.
 
 * `react-native-splash-screen`: Por padrão, o React Native apresenta uma tela cinza (Android) ou uma tela branca com o nome do app (iOS) enquanto o código nativo e o bundle JS são inicializados. Para fechar esta lacuna, o [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen#installation) permite a personalização da tela de carregamento de forma simplificada.
 
-    [Este artigo](https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae) mostra o passo a passo de como adicionar telas de carregamento personalizadas em ambas as plataformas. 
+    [Este artigo](https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae) mostra o passo a passo de como adicionar telas de carregamento personalizadas em ambas as plataformas.
 
 * `react-native-vector-icons`: O que é um app sem ícones, não é mesmo? [Esse módulo](https://github.com/oblador/react-native-vector-icons) fornece diversas bibliotecas de ícones, como FontAwesome, Feather, MaterialIcons, etc. Você pode conferir todos os ícones disponíveis [aqui](https://oblador.github.io/react-native-vector-icons/).
 
-❗️ **Se você for usar ícones próprios, não é necessário instalar este módulo nativamente.** 
+❗️ **Se você for usar ícones próprios, não é necessário instalar este módulo nativamente.**
 
 ## 3. Módulos JavaScript que você (provavelmente) vai usar
 
@@ -122,7 +149,7 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 
 ## 4. Estrutura de pastas
 
-❗️ **Isso aqui não é regra. Modifique como quiser, ou ignore e crie a sua estrutura.** 
+❗️ **Isso aqui não é regra. Modifique como quiser, ou ignore e crie a sua estrutura.**
 
 Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos últimos dois anos, a estrutura abaixo é proposta:
 
@@ -148,7 +175,7 @@ Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos
     ├── 📁 config
     │   ├── 📄 colors.js
     │   └── 📄 routes.js
-    │ 
+    │
     ├── 📁 redux
     │       ├── 📄 store.js
     │       └── 📁 reducers
@@ -188,7 +215,7 @@ Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos
 
 ### 4.3 Configuração
 
-Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver). 
+Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver).
 
 ```
 yarn add -D babel-plugin-module-resolver
@@ -200,11 +227,11 @@ Além disso, os arquivos principais de cada tela ou componente deverá se chamar
 
 Após a instalação, altere o seu arquivo `.babelrc` para a seguinte estrutura:
 
-❗️ **Caso não exista um arquivo `.babelrc`, crie um.** 
+❗️ **Caso não exista um arquivo `.babelrc`, crie um.**
 
-❗️ **Caso exista um arquivo `babelrc.config.js`, modifique para a mesma estrutura usando notação JavaScript ou apague ele e crie um `.babelrc`, dá na mesma.** 
+❗️ **Caso exista um arquivo `babelrc.config.js`, modifique para a mesma estrutura usando notação JavaScript ou apague ele e crie um `.babelrc`, dá na mesma.**
 
-❗️ **Caso seu projeto quebre, encerre o processo do bundler e inicie um novo, limpando o cache. use o comando `react-native start --reset-cache` dentro da pasta do app.** 
+❗️ **Caso seu projeto quebre, encerre o processo do bundler e inicie um novo, limpando o cache. use o comando `react-native start --reset-cache` dentro da pasta do app.**
 
 ```
 {
