@@ -4,14 +4,12 @@ Projeto com o objetivo de facilitar a vida de quem está começando no React Nat
 
 PRs são bem vindas. Contribua e ajude seus colegas desenvolvedores.
 
->O algarismo "101" pode ser usado como adjetivo em inglês com o sentido de "básico", "elementar", "fundamental" etc. Este emprego tem sua origem nas universidades americanas que denominam as matérias dadas no início do curso dessa forma: "PHYSICS 101", "CALCULUS 101" etc.
+> O algarismo "101" pode ser usado como adjetivo em inglês com o sentido de "básico", "elementar", "fundamental" etc. Este emprego tem sua origem nas universidades americanas que denominam as matérias dadas no início do curso dessa forma: "PHYSICS 101", "CALCULUS 101" etc.
 >
->[O que significa “101” em inglês? - Tecla SAP](https://www.teclasap.com.br/vocabulario-elementar/)
-
-## Sumário
-`TODO`
+> [O que significa “101” em inglês? - Tecla SAP](https://www.teclasap.com.br/vocabulario-elementar/)
 
 ## 1. Iniciando um projeto
+
 ### 1.1 React Native CLI ou Expo?
 
 O Expo é sem dúvida uma excelente ferramenta. Permite criar apps com setup quase zero, vem com diversas
@@ -21,28 +19,25 @@ bibliotecas integradas, além de poder fazer projetos inteiros usando somente o 
 
 Todas essas facilidades do Expo trazem alguns _drawbacks_, das quais podemos listar:
 
-* Tamanho do app (mais de *10MB* no Android, mas algo que [estão trabalhando para diminiuir](https://expo.canny.io/feature-requests/p/reducing-app-size))
-* Incapacidade de adicionar módulos com código nativo (a.k.a. `react-native link`)
-* Aquisições dentro do aplicativo (como ativar um plano premium)
-* Dependência do Expo em políticas das App Store/Play Store - como a recente mudança na Play Store para suporte obrigatório a processadores 64 bits.
-
-Vale mencionar também algumas vantagens:
-
-* Atualizações OTA
-* Splash screen já implementada por padrão
-* Testar aplicativo no celular sem setup (só baixar o aplicativo do Expo e ler o QR code)
+- Tamanho do app (mais de _10MB_ no Android, mas algo que [estão trabalhando para diminuir](https://expo.canny.io/feature-requests/p/reducing-app-size))
+- Incapacidade de adicionar módulos com código nativo (`react-native link` ou `autolinking`)
+- Aquisições dentro do aplicativo (como ativar um plano premium)
+- Dependência do Expo em políticas das App Store/Play Store - como a recente mudança na Play Store para suporte obrigatório a processadores 64 bits.
 
 **Então eu não devo usar o Expo para nada?**
 
-Errado. O Expo deve te atender perfeitamente em alguns casos, mas você deve ter em mente suas limitações e avaliar qual é a melhor opção para você. O ponto principal é que se você precisa usar código nativo ou quer ter um maior controle, evite usar o expo.
+Errado. O Expo deve te atender perfeitamente em alguns casos, mas você deve ter em mente suas limitações e avaliar qual é a melhor opção para você. O ponto principal é que se você precisa usar código nativo ou quer ter um maior controle, evite usar o Expo.
 
 ### 1.2 Criando o projeto
 
 ##### Expo
-Como o propósito do Expo é facilitar o setup, é muito rápido e fácil iniciar um projeto. Basta ter somente o NodeJS instalado em sua máquina e instalar o expo-cli:
-`npm install expo-cli --global`
 
-Depois disso, basta criar seu projeto pela linha de comando:
+Como o propósito do Expo é facilitar o setup, basta ter o NodeJS e o `expo-cli` instalado em sua máquina
+
+`npm i -g expo-cli`
+
+Feito isso, inicialize seu projeto:
+
 ```
 expo init meu-novo-projeto
 cd meu-novo-projeto
@@ -50,6 +45,7 @@ expo start
 ```
 
 ##### React Native CLI
+
 Antes de começar, você precisa ter seu ambiente configurado. O melhor lugar pra aprender o que deve ser feito está na documentação oficial, na aba [Building projects with Native Code](https://facebook.github.io/react-native/docs/getting-started)
 
 O próximo passo é criar seu projeto:
@@ -65,6 +61,7 @@ Se você sabe o que é Git mas não utiliza, reveja seus conceitos. Mesmo que se
 👉 Não sabe que estrutura utilizar dentro do Git? Dê uma olhada [nesse artigo.](https://nvie.com/posts/a-successful-git-branching-model/)
 
 ### 1.3 Alterando o nome do projeto
+
 Caso você vá publicar esse projeto nas lojas de aplicativo, crie o mesmo no Google Play Store e/ou Apple App Store.
 
 ❗️ **Escolha um nome de pacote consistente.**
@@ -76,7 +73,9 @@ Costuma-se utilizar a notação `com.nomedasuaempresa.nomedoapp`. Esta etapa é 
 Digamos que seu projeto chama-se _App de Táxis_, esses seriam os passos para renomear seu projeto:
 
 #### Expo
+
 Você deve adicionar as configurações do ios e do android no arquivo `app.json`, onde fica todas as configurações do seu aplicativo:
+
 ```
 "ios": {
   "bundleIdentifier": "com.nomedasuaempresa.appdetaxis"
@@ -87,13 +86,16 @@ Você deve adicionar as configurações do ios e do android no arquivo `app.json
 ```
 
 ##### React Native CLI
+
 Para facilitar o processo, recomendo a utilização do `react-native-rename`
 
 ```
 npm -i -g react-native-rename
 yarn global add react-native-rename
 ```
+
 Para renomear usando o `react-native-rename`, faça o seguinte:
+
 ```
 react-native-rename appdetaxis -b com.nomedasuaempresa.appdetaxis
 ```
@@ -111,6 +113,7 @@ Lembre-se de adicionar no seu `package.json` o seguinte trecho (e instalar o `ba
 ```
 
 ### 1.5 Referências
+
 [React-native first impressions: Expo vs. Native](https://medium.com/@paulsc/react-native-first-impressions-expo-vs-native-9565cce44c92)
 
 [Should i not be using expo?](https://www.reddit.com/r/reactnative/comments/94xsbd/should_i_not_be_using_expo/)
@@ -118,6 +121,8 @@ Lembre-se de adicionar no seu `package.json` o seguinte trecho (e instalar o `ba
 [Why not Expo?](https://docs.expo.io/versions/latest/introduction/why-not-expo/)
 
 [Is it possible to change the package name of an Android app on Google Play?](https://stackoverflow.com/questions/17582289/is-it-possible-to-change-the-package-name-of-an-android-app-on-google-play)
+
+[React Native Web, Expo, React.memo, O Universo do React Native | #PR 04](https://www.youtube.com/watch?v=VsU6p7DHVtA)
 
 ## 2. Módulos nativos que você (provavelmente) vai usar
 
@@ -127,140 +132,34 @@ Essa lista mostra os módulos nativos mais comuns que você vai utilizar em quas
 
 ❗️ **Após cada instalação, teste seu app. Se ele abrir sem nenhum erro, vá para o próximo módulo.**
 
-* `react-native-firebase`: Mesmo que você não vá usar o Firestore/Realtime Database como seu banco de dados, o Firebase oferece o **Crashlytics**, ferramenta mais que obrigatória em qualquer aplicativo para monitorar falhas em tempo real. Basta seguir [a documentação oficial](https://rnfirebase.io) para adicionar ele ao seu projeto.
+- `react-native-firebase`: Mesmo que você não vá usar o Firestore/Realtime Database como seu banco de dados, o Firebase oferece o **Crashlytics**, ferramenta mais que obrigatória em qualquer aplicativo para monitorar falhas em tempo real. Basta seguir [a documentação oficial](https://rnfirebase.io) para adicionar ele ao seu projeto.
 
-* `react-native-splash-screen`: Por padrão, o React Native apresenta uma tela cinza (Android) ou uma tela branca com o nome do app (iOS) enquanto o código nativo e o bundle JS são inicializados. Para fechar esta lacuna, o [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen#installation) permite a personalização da tela de carregamento de forma simplificada.
+- `react-native-splash-screen`: Por padrão, o React Native apresenta uma tela cinza (Android) ou uma tela branca com o nome do app (iOS) enquanto o código nativo e o bundle JS são inicializados. Para fechar esta lacuna, o [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen#installation) permite a personalização da tela de carregamento de forma simplificada.
 
-    [Este artigo](https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae) mostra o passo a passo de como adicionar telas de carregamento personalizadas em ambas as plataformas.
+  [Este artigo](https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae) mostra o passo a passo de como adicionar telas de carregamento personalizadas em ambas as plataformas.
 
-* `react-native-vector-icons`: O que é um app sem ícones, não é mesmo? [Esse módulo](https://github.com/oblador/react-native-vector-icons) fornece diversas bibliotecas de ícones, como FontAwesome, Feather, MaterialIcons, etc. Você pode conferir todos os ícones disponíveis [aqui](https://oblador.github.io/react-native-vector-icons/).
+- `react-native-vector-icons`: O que é um app sem ícones, não é mesmo? [Esse módulo](https://github.com/oblador/react-native-vector-icons) fornece diversas bibliotecas de ícones, como FontAwesome, Feather, MaterialIcons, etc. Você pode conferir todos os ícones disponíveis [aqui](https://oblador.github.io/react-native-vector-icons/).
 
 ❗️ **Se você for usar ícones próprios, não é necessário instalar este módulo nativamente.**
 
+- `react-native-reanimated`: Animar é preciso. E nada melhor que construir animações que rodam diretamente na thread UI do dispositivo. Para entender a necessidade e o funcionamento, escrevi [um artigo sobre](https://medium.com/@kauedm/react-native-reanimated-um-guia-pr%C3%A1tico-cbd16465b0b8), confere aí :D
+
+❗️ **Atualmente, o artigo aborda a primeira versão do react-native-reanimated. O material sobre a v2 sairá em breve.**
+
+- `react-native-gesture-handler`: O [RNGH](https://docs.swmansion.com/react-native-gesture-handler) entrega controle total aos gestos do usuário para os mais diversos fins.
+
 ## 3. Módulos JavaScript que você (provavelmente) vai usar
 
-* `axios`: Com uma [extensa documentação](https://github.com/axios/axios), é o seu client de requisições HTTP. Uma alternativa é a [Fetch API](https://facebook.github.io/react-native/docs/network#using-fetch).
+- `axios`: Com uma [extensa documentação](https://github.com/axios/axios), é o seu client de requisições HTTP. Uma alternativa é a [Fetch API](https://facebook.github.io/react-native/docs/network#using-fetch).
 
-* `react-navigation`: Responsável por fazer seu app 'trocar de telas', o [`react-navigation`](https://reactnavigation.org/) tornou-se o módulo predileto de navegação da comunidade. É possível acompanhar o progresso da ferramenta pelo [canny.io](https://react-navigation.canny.io).
+- `react-navigation`: Responsável por fazer seu app 'trocar de telas', o [`react-navigation`](https://reactnavigation.org/) tornou-se o módulo predileto de navegação da comunidade. É possível acompanhar o progresso da ferramenta pelo [canny.io](https://react-navigation.canny.io).
 
-* `redux`: O Redux é um container de estado para seu app. Em outras palavras, é um """`state` global""" (repare na quantidade de aspas nesse termo). Uma boa referência para entender o que é Redux é [este vídeo (em inglês)](https://www.youtube.com/watch?v=KcC8KZ_Ga2M) (recomendação do [starchild637](https://github.com/starchild637)). Só antes de sair instalando, verifique se você entende o que é Redux e se realmente precisa adicionar essa camada de complexidade no seu projeto.
+- `redux`: O Redux é um container de estado para seu app. Em outras palavras, é um """`state` global""" (repare na quantidade de aspas nesse termo). Uma boa referência para entender o que é Redux é [este vídeo (em inglês)](https://www.youtube.com/watch?v=KcC8KZ_Ga2M) (recomendação do [starchild637](https://github.com/starchild637)). Só antes de sair instalando, verifique se você entende o que é Redux e se realmente precisa adicionar essa camada de complexidade no seu projeto.
 
-* `styled-components`: Recomendação pessoal. o [`styled-components`](https://www.styled-components.com/) simplifica a personalização visual dos seus componentes, usando uma sintaxe próxima ao do CSS.
+- `styled-components`: O [`styled-components`](https://www.styled-components.com/) simplifica a personalização visual dos seus componentes, usando uma sintaxe próxima ao do CSS.
+
+- `restyle`: Uma alternativa ao `styled-components`. Focado no React Native, o [`restyle`](https://github.com/Shopify/restyle) é um gerenciador de temas poderoso construído pelo Shopify.
 
 ## 4. Estrutura de pastas
 
-❗️ **Isso aqui não é regra. Modifique como quiser, ou ignore e crie a sua estrutura.**
-
-Organizar arquivos é uma tarefa complicada. Baseado nos projetos realizados nos últimos dois anos, a estrutura abaixo é proposta:
-
-### 4.1 Visão geral
-```
-.
-├── 📄 App.js
-├── 📄 app.json
-├── 📄 index.js
-├── 📄 package.json
-├── 📁 android
-├── 📁 ios
-└── 📁 src
-    ├── 📁 assets
-    │   └── 📁 images
-    │       └── 📄 logo.png
-    │
-    ├── 📁 components
-    │   └── 📁 Button
-    │       ├── 📄 index.js
-    │       └── 📄 Button.story.js
-    │
-    ├── 📁 config
-    │   ├── 📄 colors.js
-    │   └── 📄 routes.js
-    │
-    ├── 📁 redux
-    │       ├── 📄 store.js
-    │       └── 📁 reducers
-    │           ├── 📄 index.js
-    │           └── 📄 customer.js
-    │
-    ├── 📁 screens
-    │   └── 📁 Home
-    │        ├── 📄 index.js
-    │        └── 📄 _localComponents.js
-    │
-    ├── 📁 services
-    │   └── 📁 API
-    │       ├── 📄 API.js
-    │       └── 📄 SomeAPIEndpoint.js
-    │
-    └── 📁 utils
-        └── 📁 String
-            └── 📄 camelize.js
-```
-
-### 4.2 Descrição
-
-* **./assets:** A pasta onde todos os seus arquivos externos vão ficar.
-
-* **./components:** Cada componente deve ter a sua própria pasta, sendo sempre que possível `stateless`. Caso você use Storybook, sua `story` deve ficar dentro da pasta do respectivo componente.
-
-* **./config:** Arquivos de configuração do seu app. Rotas, cores, etc.
-
-* **./redux:** Caso use Redux, aqui ficam o `store` e os `reducers` da sua aplicação. A estrutura desses reducers serão abordadas nos próximos capítulos deste guia 🦆.
-
-* **./screens:** As telas do seu app. Cada tela tem sua própria pasta. Dentro de cada pasta pode existir também algo que chamo de `_localComponents`. O conteúdo desses arquivos são geralmente **ajustes de layout** específicos para a tela em questão (separadores, margens, etc). São regras que não vão se repetir em outras telas, e para não poluir o arquivo principal, eu as movo para este arquivo genérico.
-
-* **./services:** Serviços são (preferencialmente) classes que fazem algo específico no seu app, ou seja, não podem ser copiadas e coladas em outro projeto. Ficam aqui chamadas para APIs, por exemplo.
-
-* **./utils:** Utilitários são funções que fazem algo genérico, ou seja, podem ser copiadas e coladas em outro projeto. Semelhantes aos módulos do `npm`, os arquivos que estão em `./utils` não são modificados de acordo com a necessidade.
-
-### 4.3 Configuração
-
-Para fazer essa estrutura (ou qualquer outra) funcionar sem precisar fazer imports longos, você vai usar o pacote [`babel-plugin-module-resolver`](https://github.com/tleunen/babel-plugin-module-resolver).
-
-```
-yarn add -D babel-plugin-module-resolver
-ou
-npm --save-dev babel-plugin-module-resolver
-```
-
-Além disso, os arquivos principais de cada tela ou componente deverá se chamar `index.js` para facilitar a importação.
-
-Após a instalação, altere o seu arquivo `.babelrc` para a seguinte estrutura:
-
-❗️ **Caso não exista um arquivo `.babelrc`, crie um.**
-
-❗️ **Caso exista um arquivo `babelrc.config.js`, modifique para a mesma estrutura usando notação JavaScript ou apague ele e crie um `.babelrc`, dá na mesma.**
-
-❗️ **Caso seu projeto quebre, encerre o processo do bundler e inicie um novo, limpando o cache. use o comando `react-native start --reset-cache` dentro da pasta do app.**
-
-```
-{
-  "presets": [
-    "module:metro-react-native-babel-preset"
-  ],
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "cwd": "babelrc",
-        "root": ["./src"],
-        "extensions": [".js"],
-        "alias": {
-          "screens": "./src/screens",
-          "components": "./src/components",
-          ...outros alias aqui (assets, services, etc)
-        }
-      }
-    ]
-  ]
-}
-```
-
-Após isso, todos os valores definidos em `alias` poderão ser acessados diretamente, ou seja, seus imports ficarão assim:
-
-```
-import Home from 'screens/Home'
-
-// caso o arquivo importado seja nomeado (não se chame index.js):
-import SomeAPIEndpoint from 'services/API/SomeAPIEndpoint'
-```
+> Tópico sendo reescrito. Volte em breve para ler ;D
